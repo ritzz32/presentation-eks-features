@@ -1,0 +1,152 @@
+<section>
+    <h3>Host File vs DNS vs Service Mesh</h3>
+</section>
+<section>
+    <h4>Host File</h4>
+    <table class="fragment" style="font-size: 0.5em">
+        <tr>
+            <th>1 env, n instances</th>
+            <td>Is doing it right now.</td>
+        </tr>
+        <tr>
+            <th>Target cross env</th>
+            <td>Is doing it right now.</td>
+        </tr>
+        <tr>
+            <th>Service health</th>
+            <td>Capable, but needs work</td>
+        </tr>
+        <tr>
+            <th>DR</th>
+            <td>Capable, in transition</td>
+        </tr>
+        <tr>
+            <th>Hybrid Infra</th>
+            <td>Possible, but would need a lot of work</td>
+        </tr>
+        <tr>
+            <th>Min Changes</th>
+            <td>Allready in place</td>
+        </tr>
+        <tr>
+            <th>HA</th>
+            <td>Fully distrubuted and will maintain state on failure</td>
+        </tr>
+        <tr>
+            <th>Dev Workflow</th>
+            <td>Working, but very fragile (hostfile-ws)</td>
+        </tr>
+        <tr>
+            <th>Cost Maintenance</th>
+            <td>No direct monitary cost, high maintenance cost<br />Puppet Managed, Complex</td>
+        </tr>
+    </table>
+</section>
+<section>
+    <h4>DNS</h4>
+    <table class="fragment" style="font-size: 0.5em">
+        <tr>
+            <th>1 env, n instances</th>
+            <td>Doable via subdomains<br>
+                <ul>
+                    <li>business.service.boi.prod.cwan</li>
+                    <li>business.ext.boi.prod.cwan</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Target cross env</th>
+            <td>Doable, but would require work<br>
+                <ul>
+                    <li>Every app would have to have a property for every target service specifying domain</li>
+                    <li>Would have to have a local managed DNS resolver for every node</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Service health</th>
+            <td>Assuming Route 53, health checks can be put in place, but can only be updated as quickly as TTL and resolution requests</td>
+        </tr>
+        <tr>
+            <th>DR</th>
+            <td>Could build a failover management service, but again will only update on TTL and resolution requests</td>
+        </tr>
+        <tr>
+            <th>Hybrid Infra</th>
+            <td>Very doable, DNS just needs a target so hybrid solutions are not a problem</td>
+        </tr>
+        <tr>
+            <th>Min Changes</th>
+            <td>Could be a large number of changes or could be minimal either way work is needed who does the work just shifts</td>
+        </tr>
+        <tr>
+            <th>HA</th>
+            <td>Assuming Route 53 HA is provided by Amazon, but in the event of a failure our system is non-functional.</td>
+        </tr>
+        <tr>
+            <th>Dev Workflow</th>
+            <td>
+                Devs should be able to target subdomains, however how they manage those targets would be very much in question.
+            </td>
+        </tr>
+        <tr>
+            <th>Cost Maintenance</th>
+            <td>
+                There would be a cost from Amazon per record + cost per request, but these costs are fairly minimal.<br>
+                Maintenance should also be minimal depending on targeting solutions and DR solutions
+            </td>
+        </tr>
+    </table>
+</section>
+<section>
+    <h4>Service Mesh</h4>
+    <table class="fragment" style="font-size: 0.5em">
+        <tr>
+            <th>1 env, n instances</th>
+            <td>Using service tags each instance of a service can be uniquly identified in an environment</td>
+        </tr>
+        <tr>
+            <th>Target cross env</th>
+            <td>Useing mesh gateways / multi mesh one environment can target services in another environment</td>
+        </tr>
+        <tr>
+            <th>Service health</th>
+            <td>
+                Health checks can be defined on the node as well as the controll plane.<br>
+                Unhealthy nodes will taken out of the mesh immediatly
+            </td>
+        </tr>
+        <tr>
+            <th>DR</th>
+            <td>??? May be able to change targeting with API call to control plane.</td>
+        </tr>
+        <tr>
+            <th>Hybrid Infra</th>
+            <td>Depends on control plane, but with multi mesh and work this is very doable</td>
+        </tr>
+        <tr>
+            <th>Min Changes</th>
+            <td>No project code changes at all.</td>
+        </tr>
+        <tr>
+            <th>HA</th>
+            <td>Proxy configuration is distrubuted per node, current state is maintained in the event of an outage.</td>
+        </tr>
+        <tr>
+            <th>Dev Workflow</th>
+            <td>
+                ??? This would require work, a few ideas would be
+                <ul>
+                    <li>Dev workstations have a data plane agent on them attaching them to the mesh.</li>
+                    <li>Environment gateways would be setup and devs would resolve dependancies there.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Cost Maintenance</th>
+            <td>
+                ??? Cost and maintenance would depend on the implementation.
+            </td>
+        </tr>
+    </table>
+</section>

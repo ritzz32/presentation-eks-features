@@ -1,0 +1,13 @@
+.reveal section.title, .reveal section.title h2 {
+    color: white
+}
+
+.reveal section img {
+    background:none;
+    border:none;
+    box-shadow:none;
+}
+
+.reveal p {
+    font-size: 0.8em
+}
