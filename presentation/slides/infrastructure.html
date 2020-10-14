@@ -2,8 +2,126 @@
     <h2>Infrastructure</h2>
 </section>
 <section>
-    <p>TODO Kubernetes Infrastructure</p>
+    <img width="90%" src="media/images/infra-basic.png" />
 </section>
 <section>
-    <h3>Woker Nodes</h3>
+    <h2>Control Plane</h2>
+    <table class="table-info">
+        <tr><th>Master Nodes</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-green" data-fragment-index="1">High Availability</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Health Checks</td>
+                <td class="fragment highlight-green" data-fragment-index="1">K8S Updates</td>
+                <td class="fragment highlight-green" data-fragment-index="1">OS Updates</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>ETCD</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-green" data-fragment-index="1">High Availability</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Data Rotation</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Backup</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Restores</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>API Server</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-green" data-fragment-index="1">Certificate Management</td>
+                <td class="fragment highlight-green" data-fragment-index="1">User Authentication</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Audit Logging</td>
+            </tr></table>
+        </td></tr>
+    </table>
+    <img style="width: 35%;" src="media/images/legend.png">
+</section>
+<section>
+    <h2>Node Groups</h2>
+    <table class="table-info">
+        <tr><th>Unmanaged Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td>EC2</td>
+                <td>1 Instance Type / Group</td>
+                <td>Customer Managed</td>
+                <td>Very Customizable</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>Managed Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td>EC2</td>
+                <td>1 Instance Type / Group</td>
+                <td>Customer Defined</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>Spot Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td>EC2</td>
+                <td>Multiple Instance Types / Group</td>
+                <td>Customer Defined</td>
+                <td>Very cost effective</td>
+                <td>2 Minute Warning</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>Fargate Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td>Fargate</td>
+                <td>Instance type based on workload</td>
+                <td>Automatically Defined</td>
+            </tr></table>
+        </td></tr>
+    </table>
+</section>
+<section>
+    <table class="table-info">
+        <tr><th>Unmanaged Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-blue" data-fragment-index="1">AZ Assignment</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Kubelet Configuration</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">OS Updates</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">K8S Updates</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Auto Scaling</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Security Groups</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>Managed Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-green" data-fragment-index="1">AZ Assignment</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Kubelet Configuration</td>
+                <td class="fragment highlight-green" data-fragment-index="1">OS Updates</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">K8S Updates</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Auto Scaling</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Security Groups</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>Spot Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-green" data-fragment-index="1">AZ Assignment</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Kubelet Configuration</td>
+                <td class="fragment highlight-green" data-fragment-index="1">OS Updates</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">K8S Updates</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Auto Scaling</td>
+                <td class="fragment highlight-blue" data-fragment-index="1">Security Groups</td>
+            </tr></table>
+        </td></tr>
+        <tr><th>Fargate Node Group</th></tr>
+        <tr><td>
+            <table><tr>
+                <td class="fragment highlight-green" data-fragment-index="1">AZ Assignment</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Kubelet Configuration</td>
+                <td class="fragment highlight-green" data-fragment-index="1">OS Updates</td>
+                <td class="fragment highlight-green" data-fragment-index="1">K8S Updates</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Auto Scaling</td>
+                <td class="fragment highlight-green" data-fragment-index="1">Security Groups</td>
+            </tr></table>
+        </td></tr>
+    </table>
+    <img style="width: 35%;" src="media/images/legend.png">
 </section>

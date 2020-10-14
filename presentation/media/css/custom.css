@@ -11,3 +11,37 @@
 .reveal p {
     font-size: 0.8em
 }
+
+.table-info table td {
+    text-align: center;
+    font-size: 0.6em;
+    border-right: 1px solid gray;
+}
+
+.table-info table td:last-child {
+    border-right: 0px none gray;
+}
+
+.table-info tr th {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.table-info>tbody>tr:nth-child(4n+1) {
+    background-color: #eeeeee;
+}
+
+.table-info>tbody>tr:nth-child(4n+2) {
+    background-color: #eeeeee;
+}
+
+.reveal .slides section .fragment.highlight-green.visible {
+    color: white;
+    background-color: orange;
+    border-right: 1px solid white;
+}
+
+.reveal .slides section .fragment.highlight-blue.visible {
+    color: white;
+    background-color: blue;
+}
